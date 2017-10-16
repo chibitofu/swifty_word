@@ -13,6 +13,7 @@
 		73AFDF3F1F93387F00520BA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AFDF3E1F93387F00520BA0 /* Assets.xcassets */; };
 		73AFDF421F93387F00520BA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AFDF401F93387F00520BA0 /* LaunchScreen.storyboard */; };
 		73AFDF4D1F93388000520BA0 /* swifty_wordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFDF4C1F93388000520BA0 /* swifty_wordTests.swift */; };
+		73AFDF581F948F1E00520BA0 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 73AFDF571F948F1E00520BA0 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		73AFDF481F93388000520BA0 /* swifty_wordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swifty_wordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AFDF4C1F93388000520BA0 /* swifty_wordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swifty_wordTests.swift; sourceTree = "<group>"; };
 		73AFDF4E1F93388000520BA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73AFDF571F948F1E00520BA0 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				73AFDF371F93387F00520BA0 /* AppDelegate.swift */,
 				73AFDF391F93387F00520BA0 /* ViewController.swift */,
+				73AFDF571F948F1E00520BA0 /* level1.txt */,
 				73AFDF3B1F93387F00520BA0 /* Main.storyboard */,
 				73AFDF3E1F93387F00520BA0 /* Assets.xcassets */,
 				73AFDF401F93387F00520BA0 /* LaunchScreen.storyboard */,
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AFDF421F93387F00520BA0 /* LaunchScreen.storyboard in Resources */,
+				73AFDF581F948F1E00520BA0 /* level1.txt in Resources */,
 				73AFDF3F1F93387F00520BA0 /* Assets.xcassets in Resources */,
 				73AFDF3D1F93387F00520BA0 /* Main.storyboard in Resources */,
 			);
