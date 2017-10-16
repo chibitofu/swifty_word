@@ -9,25 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    //Label where the clues are.
+
     @IBOutlet weak var cluesLabel: UILabel!
-    
-    //Label that holds the answers.
     @IBOutlet weak var answersLabel: UILabel!
-    
-    //Current score label.
     @IBOutlet weak var scoreLabel: UILabel!
-    
-    //Displays the current answer.
     @IBOutlet weak var currentAnswer: UITextField!
     
-    //Button to submit the answer.
+    var letterButons = [UIButton]()
+    var activateButtons = [UIButton]()
+    var solutions = [String]()
+    
+    var score = 0
+    var level = 1
+    
     @IBAction func submitTapped(_ sender: Any) {
     }
     
-    //Button to clear the current answer.
     @IBAction func clearTapped(_ sender: Any) {
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
