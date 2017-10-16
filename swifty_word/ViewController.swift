@@ -31,7 +31,6 @@ class ViewController: UIViewController {
     
     
     @objc func letterTapped(btn: UIButton) {
-        
     }
     
     func loadLevel() {
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
             if let levelContents = try? String(contentsOfFile: levelFilePath) {
                 var lines = levelContents.components(separatedBy: "\n")
                 lines = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: lines) as! [String]
-                
+
                 for (index, line) in lines.enumerated() {
                     let parts = line.components(separatedBy: ": ")
                     let answer = parts[0]
@@ -60,22 +59,33 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        letterBits = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: letterBits) as! [String]
+        
+        if letterBits.count == letterButtons.count {
+            for i in 0 ..< letterBits.count {
+                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         for subview in view.subviews where subview.tag == 1001 {
             let btn = subview as! UIButton
             letterButtons.append(btn)
             btn.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
         }
-        // Do any additional setup after loading the view, typically from a nib.
+        loadLevel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
 
