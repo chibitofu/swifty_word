@@ -31,6 +31,9 @@ class ViewController: UIViewController {
     
     
     @objc func letterTapped(btn: UIButton) {
+        currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
+        activateButtons.append(btn)
+        btn.isHidden = true
     }
     
     func loadLevel() {
