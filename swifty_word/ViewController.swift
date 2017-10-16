@@ -6,6 +6,7 @@
 //  Copyright © 2017 Erin Moon. All rights reserved.
 //
 
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -15,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var currentAnswer: UITextField!
     
-    var letterButons = [UIButton]()
+    var letterButtons = [UIButton]()
     var activateButtons = [UIButton]()
     var solutions = [String]()
     
@@ -29,8 +30,46 @@ class ViewController: UIViewController {
     }
     
     
+    @objc func letterTapped(btn: UIButton) {
+        
+    }
+    
+    func loadLevel() {
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+        
+        if let levelFilePath = Bundle.main.path(forResource: "level\(level)", ofType: "txt") {
+            if let levelContents = try? String(contentsOfFile: levelFilePath) {
+                var lines = levelContents.components(separatedBy: "\n")
+                lines = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: lines) as! [String]
+                
+                for (index, line) in lines.enumerated() {
+                    let parts = line.components(separatedBy: ": ")
+                    let answer = parts[0]
+                    let clue = parts[1]
+                    
+                    clueString += "\(index + 1). \(clue)\n"
+                    
+                    let solutionWord = answer.replacingOccurrences(of: "|", with: "")
+                    solutionString += "\(solutionWord.count) letters\n"
+                    solutions.append(solutionWord)
+                    
+                    let bits = answer.components(separatedBy: "|")
+                    letterBits += bits
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for subview in view.subviews where subview.tag == 1001 {
+            let btn = subview as! UIButton
+            letterButtons.append(btn)
+            btn.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
