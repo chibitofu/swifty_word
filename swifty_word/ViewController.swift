@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentAnswer: UITextField!
     
     var letterButtons = [UIButton]()
-    var activateButtons = [UIButton]()
+    var activatedButtons = [UIButton]()
     var solutions = [String]()
     
     var score = 0
@@ -27,12 +27,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: Any) {
+        currentAnswer.text = ""
+        
+        for btn in activatedButtons {
+            btn.isHidden = false
+        }
+        
+        activatedButtons.removeAll()
     }
     
     
     @objc func letterTapped(btn: UIButton) {
         currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
-        activateButtons.append(btn)
+        activatedButtons.append(btn)
         btn.isHidden = true
     }
     
