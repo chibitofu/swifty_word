@@ -20,8 +20,24 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
     var level = 1
+    
+    func levelUp(action: UIAlertAction) {
+        level += 1
+        solutions.removeAll(keepingCapacity: true)
+        
+        loadLevel()
+        
+        for btn in letterButtons {
+            btn.isHidden = false
+        }
+    }
     
     @IBAction func submitTapped(_ sender: Any) {
         if let solutionPosition = solutions.index(of: currentAnswer.text!) {
@@ -37,6 +53,7 @@ class ViewController: UIViewController {
             if score % 7 == 0 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
+                ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 present(ac, animated: true)
             }
         }
@@ -83,17 +100,6 @@ class ViewController: UIViewController {
                     let bits = answer.components(separatedBy: "|")
                     letterBits += bits
                 }
-            }
-        }
-        
-        func levelUp(action: UIAlertAction) {
-            level += 1
-            solutions.removeAll(keepingCapacity: true)
-            
-            loadLevel()
-            
-            for btn in letterButtons {
-                btn.isHidden = false
             }
         }
         
