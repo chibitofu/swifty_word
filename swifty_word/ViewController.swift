@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     var solutions = [String]()
     var level = 1
     var score = 0 {
+        //Sets an observer for score to have the scoreLabel auto update.
         didSet {
             scoreLabel.text = "Score: \(score)"
         }
@@ -144,7 +145,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
-
 
 }
 
