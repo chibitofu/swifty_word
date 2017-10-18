@@ -56,6 +56,10 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 present(ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Incorrect", message: "That answer does not match any of the clues", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: clearTapped))
+            present(ac, animated: true)
         }
     }
     
